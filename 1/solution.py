@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 def time_spent_connected(logs):
