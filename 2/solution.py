@@ -24,7 +24,42 @@ def longest_subarray_sum(nums: list[int], k: int) -> int:
     return max_length
 
 
-print(longest_subarray_sum([1, -1, 5, -2, 3], 3))   # 4
-print(longest_subarray_sum([-2, -1, 2, 1], 1))      # 2
-print(longest_subarray_sum([1, 2, 3], 6))           # 3
-print(longest_subarray_sum([1, 2, 3], 7))           # 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def run_tests():
+    test_cases = [
+        (([1, -1, 5, -2, 3], 3), 4),
+        (([-2, -1, 2, 1], 1), 2),
+        (([1, 2, 3], 6), 3),
+        (([1, 2, 3], 7), 0),
+        (([1, -1, 1, -1, 1], 1), 5),  # Alternance, somme intermittente
+        (([0, 0, 0, 0], 0), 4),       # Tous nuls
+        (([3, 1, -1, 2, -2, 4], 5), 4), # Plusieurs possibilités
+        (([], 0), 0),                # Cas vide
+        (([5], 5), 1),               # Cas minimal
+        (([5], 3), 0),               # Cas minimal sans correspondance
+    ]
+
+    for i, ((nums, k), expected) in enumerate(test_cases, 1):
+        try:
+            result = longest_subarray_sum(nums, k)
+            assert result == expected, f"Test {i} échoué : attendu {expected}, obtenu {result}"
+            print(f"✅ Test {i} OK")
+        except AssertionError as e:
+            print("❌", e)
+        except Exception as e:
+            print(f"⚠️ Erreur inattendue dans le test {i} :", e)
+
+run_tests()
